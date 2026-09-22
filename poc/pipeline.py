@@ -257,6 +257,24 @@ def main() -> int:
         print(f"⑦ 초안 — {'생성됨' if rep else '실패'}"
               + (f" ({생성메모})" if 생성메모 else ""))
 
+    # 검수 화면이 읽을 구조화 형태. md 를 파싱하는 것보다 안전하다.
+    (방 / "report.json").write_text(json.dumps({
+        "이름": 입력.get("name"), "주제": topics,
+        "사주풀이": rep.saju_reading if rep else [],
+        "이번달흐름": rep.monthly_flow if rep else [],
+        "조언": rep.advice if rep else {},
+        "키워드": rep.keywords if rep else [],
+        "면책": rep.disclaimer if rep else "",
+        "생성메모": 생성메모,
+        "원국": {k: (None if v is None else f"{v.ko}({v.gan}{v.ji})") for k, v in
+                (("연주", chart.year), ("월주", chart.month),
+                 ("일주", chart.day), ("시주", chart.hour))},
+        "오행": chart.elements.counts, "판정": chart.elements.verdict,
+        "세운": period.label, "보정메모": 메모,
+        "확인필요": 확인.필요, "확인이유": 확인.이유, "확인경고": 확인.경고,
+        "대본": 확인.대본,
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+
     (방 / "리포트_초안.md").write_text(
         R.마크다운(rep, chart, period, 입력["name"] or "손님", topics, facts,
                   생성메모, 확인),

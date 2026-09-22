@@ -1,0 +1,14 @@
+{
+  "name": "정미란",
+  "gender": null,
+  "birth_date": "1963-09-05",
+  "calendar_type": "solar",
+  "is_leap": false,
+  "birth_time": null,
+  "birth_place": null,
+  "question": "돈 문제",
+  "uncertain": [],
+  "missing": [
+    "gender"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "박정호",
+  "gender": "male",
+  "birth_date": "1988-08-20",
+  "calendar_type": "lunar",
+  "is_leap": null,
+  "birth_time": "19:00",
+  "birth_place": "대구",
+  "question": "사업을 하나 시작하려는데 괜찮을지 그게 제일 궁금합니다.",
+  "uncertain": [
+    "birth_time"
+  ],
+  "missing": [
+    "is_leap"
+  ]
+}

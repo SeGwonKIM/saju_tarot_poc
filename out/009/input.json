@@ -1,0 +1,15 @@
+{
+  "name": "배기훈",
+  "gender": null,
+  "birth_date": "1974-08-12",
+  "calendar_type": "lunar",
+  "is_leap": null,
+  "birth_time": "18:30",
+  "birth_place": null,
+  "question": "올해 안에 사업을 정리할지 말지가 제일 고민이에요.",
+  "uncertain": [],
+  "missing": [
+    "gender",
+    "is_leap"
+  ]
+}
