@@ -1,0 +1,12 @@
+{
+  "name": "송복희",
+  "gender": "female",
+  "birth_date": "1947-02-18",
+  "calendar_type": "lunar",
+  "is_leap": true,
+  "birth_time": "10:00",
+  "birth_place": "전주",
+  "question": "건강이 요새 안 좋으셔서 그게 제일 궁금해요.",
+  "uncertain": [],
+  "missing": []
+}

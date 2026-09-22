@@ -1,0 +1,12 @@
+{
+  "name": "노말순",
+  "gender": "female",
+  "birth_date": "1960-06-05",
+  "calendar_type": "lunar",
+  "is_leap": true,
+  "birth_time": null,
+  "birth_place": "목포",
+  "question": "요즘 대인관계로 스트레스를 많이 받으세요.",
+  "uncertain": [],
+  "missing": []
+}

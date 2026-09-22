@@ -1,0 +1,12 @@
+{
+  "name": "김하늘",
+  "gender": "female",
+  "birth_date": "1995-03-12",
+  "calendar_type": "solar",
+  "is_leap": false,
+  "birth_time": "15:20",
+  "birth_place": "서울",
+  "question": "올해 이직을 생각하고 있는데 시기가 맞는지 보고 싶어요.",
+  "uncertain": [],
+  "missing": []
+}

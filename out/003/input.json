@@ -1,0 +1,14 @@
+{
+  "name": "이영숙",
+  "gender": "female",
+  "birth_date": "1972-11-03",
+  "calendar_type": "solar",
+  "is_leap": false,
+  "birth_time": "08:00",
+  "birth_place": "부산",
+  "question": "건강이 요즘 안 좋아서요. 그리고 딸아이 결혼 문제도 좀.",
+  "uncertain": [
+    "birth_time"
+  ],
+  "missing": []
+}

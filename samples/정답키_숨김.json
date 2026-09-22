@@ -1,0 +1,53 @@
+{
+  "006": {
+    "name": "한지웅",
+    "gender": "male",
+    "birth_date": "1979-05-17",
+    "calendar_type": "solar",
+    "is_leap": false,
+    "birth_time": "12:30",
+    "birth_place": "광주",
+    "question": "이직 여부",
+    "question_keywords": [
+      "직장",
+      "이직",
+      "옮길",
+      "전직"
+    ],
+    "난이도": "어려움 — 스스로 말을 고침(사월→오월). 앞의 틀린 값을 잡으면 안 됨",
+    "노리는 것": "정정된 뒤의 값을 쓰는가"
+  },
+  "007": {
+    "name": "송복희",
+    "gender": "female",
+    "birth_date": "1947-02-08",
+    "calendar_type": "lunar",
+    "is_leap": true,
+    "birth_time": "10:00",
+    "birth_place": "전주",
+    "question": "건강",
+    "question_keywords": [
+      "건강",
+      "몸"
+    ],
+    "난이도": "어려움 — 윤달 명시 + '초여드레' + 본인이 아닌 가족 의뢰",
+    "노리는 것": "is_leap=True 를 잡는가 (1947년은 실제로 윤2월이 있는 해). 의뢰한 사람이 아니라 어머니 이름을 쓰는가"
+  },
+  "008": {
+    "name": "오세린",
+    "gender": "female",
+    "birth_date": "2001-12-31",
+    "calendar_type": "solar",
+    "is_leap": false,
+    "birth_time": "23:40",
+    "birth_place": "창원",
+    "question": "취업, 연애운",
+    "question_keywords": [
+      "취업",
+      "연애",
+      "직장"
+    ],
+    "난이도": "어려움 — 연도를 '이천일년'으로 말함. 밤 11시 40분(자시 경계, 해를 넘김)",
+    "노리는 것": "한글 연도를 읽는가. 23:40 이 조자시로 넘어가 년주까지 바뀌는가"
+  }
+}

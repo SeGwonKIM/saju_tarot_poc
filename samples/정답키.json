@@ -1,0 +1,89 @@
+{
+  "001": {
+    "name": "김하늘",
+    "gender": "female",
+    "birth_date": "1995-03-12",
+    "calendar_type": "solar",
+    "is_leap": false,
+    "birth_time": "15:20",
+    "birth_place": "서울",
+    "question": "올해 이직 시기",
+    "question_keywords": [
+      "이직",
+      "직장",
+      "전직",
+      "회사"
+    ],
+    "난이도": "쉬움 — 전부 명확",
+    "노리는 것": "기본 5항목이 다 뽑히는가"
+  },
+  "002": {
+    "name": "박정호",
+    "gender": "male",
+    "birth_date": "1988-07-20",
+    "calendar_type": "lunar",
+    "is_leap": null,
+    "birth_time": "19:00",
+    "birth_place": "대구",
+    "question": "사업 시작 시기",
+    "question_keywords": [
+      "사업",
+      "창업",
+      "장사"
+    ],
+    "난이도": "중간 — 음력인데 윤달을 안 물어봄",
+    "노리는 것": "is_leap 을 지어내지 않고 null 로 두는가"
+  },
+  "003": {
+    "name": "이영숙",
+    "gender": "female",
+    "birth_date": "1972-11-03",
+    "calendar_type": "solar",
+    "is_leap": false,
+    "birth_time": "08:00",
+    "birth_place": "부산",
+    "question": "건강, 자녀 결혼",
+    "question_keywords": [
+      "건강",
+      "결혼",
+      "딸"
+    ],
+    "난이도": "중간 — '아침 여덟시쯤' 모호한 시각",
+    "노리는 것": "근사값을 넣되 불확실하다는 표시를 남기는가"
+  },
+  "004": {
+    "name": "최민수",
+    "gender": "male",
+    "birth_date": "1987-07-22",
+    "calendar_type": "solar",
+    "is_leap": false,
+    "birth_time": "01:10",
+    "birth_place": "인천",
+    "question": "내년 이사 시기와 방향",
+    "question_keywords": [
+      "이사",
+      "이전",
+      "방향"
+    ],
+    "난이도": "어려움 — 자시 근처 + 1987년 서머타임 구간",
+    "노리는 것": "서머타임(-1시간) 보정이 걸리는가. 보정 후 00:10 이 되어 일주가 바뀔 수 있음"
+  },
+  "005": {
+    "name": "정미란",
+    "gender": null,
+    "birth_date": "1963-09-05",
+    "calendar_type": "solar",
+    "is_leap": false,
+    "birth_time": null,
+    "birth_place": null,
+    "question": "재물운",
+    "question_keywords": [
+      "재물",
+      "돈",
+      "금전",
+      "재정"
+    ],
+    "난이도": "어려움 — 성별·시간·출생지 모두 미언급",
+    "노리는 것": "이름으로 성별을 추측하지 않고 null 로 두는가. 성별이 없으면 대운 산출 불가를 알리는가"
+  }
+}

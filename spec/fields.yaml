@@ -1,0 +1,114 @@
+# 이 파일이 단일 진실 원천이다 (검토의견 §7-3).
+#
+# 지금까지의 결함은 전부 "같은 사실이 세 곳에 따로 적혀 있어서" 생겼다.
+#
+#   문서(PRD)      "대운을 산출한다"        ← 주장
+#   채점 스크립트   채점필드 5개             ← is_leap 없음
+#   구현(코드)      대운 0곳, gender 사용 0곳 ← 실제
+#
+# 유형 A(성립하지 않는 시험)와 유형 B(없는 기능 주장)는 이 어긋남의 두 얼굴이다.
+# 그래서 세 곳이 전부 이 파일을 읽게 한다.
+#
+# 규칙
+#   · 채점 항목은 slots 의 scored: true 에서 자동으로 나온다. 손으로 못 적는다.
+#   · status: implemented 인데 테스트가 없으면 verify 가 실패한다.
+#   · status: planned 인 것을 문서가 "한다"고 적으면 그것이 유형 B다.
+
+version: 4                      # 이 선언이 바뀔 때마다 올린다 (기준 변경 대장과 연동)
+updated: "2026-09-22"
+
+# 서비스 범위 — 사업 규칙이지 라이브러리 한계가 아니다.
+# 2026년 현재 1940년 이전 출생자는 상담 대상이 아니다(최고령 86세).
+# 범위 밖 입력은 계산하지 않고 거부한다. 조용히 틀린 원국을 내는 것보다 낫다.
+service_range:
+  min_birth_year: 1940
+  max_birth_year: null          # null = 오늘 연도
+  reason: "2026년 기준 상담 대상 연령. 범위 밖은 표본도 검증도 없다."
+
+slots:                          # 대화에서 채워야 하는 값. 코드가 상태를 관리한다.
+  - id: name
+    required: true
+    scored: true
+    kind: text
+  - id: gender
+    required: true
+    scored: true
+    kind: enum
+    values: [male, female]
+    used_by: [대운]             # ⚠ 대운이 planned 이므로 현재 소비처 없음 (F-13)
+  - id: birth_date
+    required: true
+    scored: true
+    kind: date
+  - id: calendar_type
+    required: true
+    scored: true                # ← v3 에서 추가 (F-17)
+    kind: enum
+    values: [solar, lunar]
+    used_by: [음양력변환]
+  - id: is_leap
+    required: false             # 양력이면 불필요
+    required_when: "calendar_type == lunar"
+    scored: true                # ← v3 에서 추가 (F-17). 이 값 하나로 원국이 통째로 바뀐다
+    kind: bool
+    used_by: [음양력변환]
+  - id: birth_time
+    required: false             # 없으면 3주 6글자
+    scored: true
+    kind: time
+    used_by: [진태양시보정, 시주]
+  - id: birth_place
+    required: false             # 없으면 서울 가정
+    scored: false
+    kind: text
+    used_by: [진태양시보정]
+  - id: question
+    required: true
+    scored: true
+    kind: text
+    scoring: keywords           # 서술형 — 완전일치로 못 잼. 분모에서 분리 표기한다
+
+derived:                        # 코드가 계산하는 값
+  - id: 원국4주
+    status: implemented
+    by: engine.saju_service.build_chart
+  - id: 오행분포
+    status: implemented
+    by: engine.saju_service.build_chart
+  - id: 세운월운
+    status: implemented
+    by: engine.saju_service.current_period
+  - id: 대운
+    status: planned             # ⚠ 구현 0곳. 문서가 "한다"고 적으면 유형 B (F-12)
+    by: null
+    blocks: [gender]            # 이게 planned 인 한 gender 는 허수다
+
+stages:                         # 파이프라인 단계
+  - id: stt
+    label: "① 받아쓰기"
+    status: stub                # ⚠ 코드는 있으나 실행 0회 (검토의견 §3-1 = 유형 B 4번째)
+    measured_runs: 0
+  - id: extract
+    label: "② 항목 추출"
+    status: implemented
+    measured_runs: 11
+  - id: calendar
+    label: "③ 음양력 변환"
+    status: implemented
+    measured_runs: 8
+  - id: correct
+    label: "④ 진태양시·서머타임 보정"
+    status: implemented
+    measured_runs: 8
+  - id: chart
+    label: "⑤ 원국·세운 산출"
+    status: implemented
+    measured_runs: 8
+  - id: facts
+    label: "⑥ 사실 블록"
+    status: implemented
+    measured_runs: 4
+  - id: draft
+    label: "⑦ 초안 생성"
+    status: implemented
+    measured_runs: 4

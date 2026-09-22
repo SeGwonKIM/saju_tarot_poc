@@ -1,0 +1,12 @@
+{
+  "name": "최민수",
+  "gender": "male",
+  "birth_date": "1987-07-22",
+  "calendar_type": "solar",
+  "is_leap": false,
+  "birth_time": "01:10",
+  "birth_place": "인천",
+  "question": "내년에 이사를 가야 하는데 방향이랑 시기가 궁금합니다.",
+  "uncertain": [],
+  "missing": []
+}

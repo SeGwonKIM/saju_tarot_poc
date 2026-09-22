@@ -1,0 +1,54 @@
+{
+  "009": {
+    "name": "배기훈",
+    "gender": null,
+    "birth_date": "1974-08-12",
+    "calendar_type": "lunar",
+    "is_leap": null,
+    "birth_time": "18:30",
+    "birth_place": null,
+    "question": "사업 정리 여부",
+    "question_keywords": [
+      "사업",
+      "정리",
+      "창업"
+    ],
+    "난이도": "어려움 — 성별·출생지 미언급, 윤달 안 물음",
+    "노리는 것": "빈 자리 3개를 지어내지 않고 null 로 두는가. 1974년에 윤4월은 있지만 윤8월은 없으므로 평달로 확정 가능한 경우"
+  },
+  "010": {
+    "name": "노말순",
+    "gender": "female",
+    "birth_date": "1960-06-05",
+    "calendar_type": "lunar",
+    "is_leap": true,
+    "birth_time": null,
+    "birth_place": "목포",
+    "question": "대인관계",
+    "question_keywords": [
+      "대인",
+      "관계",
+      "사람",
+      "스트레스"
+    ],
+    "난이도": "어려움 — 윤유월 명시 + 날짜 정정(초사흘→초닷새) + 시간 미상 + 가족 의뢰",
+    "노리는 것": "윤달을 월 숫자에 더하지 않는가(6월 유지). 정정 뒤 값(5일)을 쓰는가. 1960년은 실제로 윤6월이 있는 해"
+  },
+  "011": {
+    "name": "표윤아",
+    "gender": null,
+    "birth_date": "2003-10-29",
+    "calendar_type": "solar",
+    "is_leap": false,
+    "birth_time": "23:50",
+    "birth_place": null,
+    "question": "취업 시기",
+    "question_keywords": [
+      "취업",
+      "직장",
+      "구직"
+    ],
+    "난이도": "어려움 — 성별·출생지 미언급, 한자어 연도·날짜, 밤 11시 50분(자시)",
+    "노리는 것": "이름으로 성별을 짐작하지 않는가. '이천삼년'·'이십구일'을 읽는가"
+  }
+}
