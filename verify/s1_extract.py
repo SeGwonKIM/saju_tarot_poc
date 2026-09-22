@@ -19,11 +19,19 @@ from poc.extract import LlmExtractor, RuleExtractor
 from verify.guard import 표본확인
 
 뿌리 = Path(__file__).resolve().parents[1]
+_시험셋 = "--시험셋" in sys.argv
 _숨김2 = "--숨김2" in sys.argv
-_숨김 = "--숨김" in sys.argv or _숨김2
-_키 = ("정답키_숨김2.json" if _숨김2
+_숨김 = "--숨김" in sys.argv or _숨김2 or _시험셋
+_키 = ("정답키_시험셋.json" if _시험셋
+       else "정답키_숨김2.json" if _숨김2
        else "정답키_숨김.json" if _숨김 else "정답키.json")
-정답 = json.loads((뿌리 / "samples" / _키).read_text(encoding="utf-8"))
+_키파일 = 뿌리 / "samples" / _키
+if not _키파일.exists():
+    _안내 = ("  시험셋은 제3자가 만들어야 합니다. samples/시험셋_안내.md 를 보여 주세요.\n"
+             "  받은 뒤 samples/ 에 상담_1xx.txt 와 정답키_시험셋.json 을 놓습니다."
+             if _시험셋 else "  samples/ 안의 make_*.py 를 먼저 돌리십시오.")
+    raise SystemExit(f"■ {_키} 가 없습니다.\n{_안내}")
+정답 = json.loads(_키파일.read_text(encoding="utf-8"))
 
 # 채점 항목을 손으로 적지 않는다 — spec/fields.yaml 의 scored: true 에서 뽑는다.
 # 손으로 적던 시절에 is_leap·calendar_type 이 빠져 있었다 (F-17).
@@ -117,9 +125,17 @@ def 재기(ex) -> dict:
 
 
 def main() -> int:
-    print(f"S1 — 항목 추출 정확도 · {'숨김 2차' if _숨김2 else '숨김 1차' if _숨김 else '공개 문제'} "
+    print(f"S1 — 항목 추출 정확도 · {'시험셋(잠금)' if _시험셋 else '검증셋2' if _숨김2 else '검증셋1' if _숨김 else '학습셋'} "
           f"{len(정답)}건 × {len(채점필드)}항목 = {len(정답)*len(채점필드)}개 · 통과 80%")
-    if _숨김:
+    if _시험셋:
+        # 시험셋은 봉인이 그대로일 때만 채점한다. 아니면 검증셋 성적일 뿐이다.
+        from verify.seal import 확인 as 봉인확인
+        if 봉인확인() != 0:
+            raise SystemExit(
+                "\n■ 봉인이 확인되지 않아 채점하지 않습니다.\n"
+                "  이 상태로 잰 점수는 시험셋 성적이 아닙니다.")
+        print()
+    elif _숨김:
         print("※ 이 문제로는 규칙을 고치지 않는다. 고치면 숨김이 아니게 된다.")
 
     표본확인(f"S1 {_키}", 정답, 최소=1)
