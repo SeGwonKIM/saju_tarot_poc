@@ -16,6 +16,7 @@
   · 30분 타이머 — 실제로 센다. 0이 되면 '발송됨'으로 바뀐다
   · 검수 시간 자동 측정 — 연 순간부터 잰다. S3 의 빠진 분모다
   · 고친 내용 내보내기 — JSON 으로 저장해 s5 채점에 쓴다
+  · 주소 끝에 #007 을 붙이면 그 건이 바로 열린다
 
 쓰는 법:  python -m poc.admin  →  out/검수함.html
 """
@@ -331,6 +332,15 @@ setInterval(()=>{
 }, 1000);
 
 목록그리기();
+
+// 주소 끝에 #007 을 붙이면 그 건을 바로 연다.
+// 링크로 특정 주문을 가리킬 수 있고, 화면을 캡처할 때도 쓴다.
+function 주소로열기(){
+  const n = decodeURIComponent(location.hash.replace('#',''));
+  if(n && 자료.some(x=>x.번호===n)) 열기(n);
+}
+addEventListener('hashchange', 주소로열기);
+주소로열기();
 </script></body></html>
 """
 
